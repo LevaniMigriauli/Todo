@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import "./App.css";
 
+import iconDelete from "./assets/delete.svg";
+
 function App() {
   // const [taskInputValue, setTaskInputValue] = useState();
   const taskInputValue = useRef();
@@ -11,10 +13,28 @@ function App() {
       id: String(Math.random()),
       value: taskInputValue.current.value,
     };
-    setTasks((prevState) => [...prevState, obj]);
+    setTasks((prevState) => {
+      return [...prevState, obj];
+    });
+
+    // localStorage.setItem("task", JSON.stringify(tasks));
   };
 
-  console.log(tasks);
+  const taskDeleteHandler = function (task) {
+    setTasks((prevState) => {
+      for (const item of prevState) {
+        // console.log(item.id, task.id);
+        if (item.id === task.id) {
+          [...prevState.splice(prevState.indexOf(item), 1)];
+          break;
+        }
+      }
+
+      return [...prevState];
+    });
+  };
+
+  // console.log(tasks);
 
   return (
     <>
@@ -24,6 +44,9 @@ function App() {
           name=""
           id="add"
           ref={taskInputValue}
+          onKeyDown={(e) => {
+            e.key == "Enter" && taskAddHandler();
+          }}
           // value={taskInputValue}
           // onChange={(e) => setTaskInputValue(e.target.value)}
           placeholder="Note"
@@ -34,8 +57,11 @@ function App() {
       </div>
       <div>
         <ul>
-          {tasks.map((task, index) => (
-            <li key={index}>{task.value}</li>
+          {tasks.map((task) => (
+            <li key={task.id} onClick={() => taskDeleteHandler(task)}>
+              {task.value}
+              <img src={iconDelete} alt="" />
+            </li>
           ))}
         </ul>
       </div>
