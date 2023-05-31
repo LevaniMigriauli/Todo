@@ -92,39 +92,36 @@ function App() {
   };
 
   const taskSaveHandler = function (task) {
-    // setTaskUpdater(false);
     setTaskId("");
-    console.log(taskInputUpdateValue);
-    setTasks(
-      // (prevState) => {
+    setTasks((prevState) => {
       //   console.log(prevState);
 
-      tasks.map((item) => {
-        return item.id == task.id
-          ? { ...item, value: taskInputUpdateValue }
-          : item;
-      })
+      // tasks.map((item) => {
+      //   return item.id == task.id
+      //     ? { ...item, value: taskInputUpdateValue }
+      //     : item;
+      // })
 
-      // for (const item of prevState) {
-      //   if (item.id == task.id) {
-      //     console.log(
-      //       item.id,
-      //       task.id,
-      //       // Object.values(...prevState),
-      //       taskInputUpdateValue,
-      //       item
-      //     );
-      //     [
-      //       item.value,
-      //       {
-      //         id: task.id,
-      //         value: taskInputUpdateValue,
-      //       },
-      //     ];
-      //   }
-      // }
-      // return [...prevState];
-    );
+      for (const item of prevState) {
+        if (item.id == task.id) {
+          console.log(
+            // item.id,
+            // task.id,
+            // // Object.values(...prevState),
+            taskInputUpdateValue,
+            { ...item }
+          );
+          [
+            ...prevState.splice(prevState.indexOf(item), 1, {
+              id: task.id,
+              value: taskInputUpdateValue,
+            }),
+          ];
+          break;
+        }
+      }
+      return [...prevState];
+    });
   };
 
   return (
@@ -166,7 +163,10 @@ function App() {
                   <input
                     // defaultValue={task.value}
                     value={taskInputUpdateValue}
-                    onChange={(e) => setTaskInputUpdateValue(e.target.value)}
+                    onChange={(e) =>
+                      e.target.value.length < 20 &&
+                      setTaskInputUpdateValue(e.target.value)
+                    }
                     onKeyDown={(e) =>
                       e.key === "Enter" &&
                       taskInputUpdateValue !== "" &&
