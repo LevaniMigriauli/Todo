@@ -72,7 +72,6 @@ function App() {
   const taskDeleteHandler = function (task) {
     setTasks((prevState) => {
       for (const item of prevState) {
-        // console.log(item.id, task.id);
         if (item.id === task.id) {
           [...prevState.splice(prevState.indexOf(item), 1)];
           break;
@@ -94,23 +93,13 @@ function App() {
   const taskSaveHandler = function (task) {
     setTaskId("");
     setTasks((prevState) => {
-      //   console.log(prevState);
-
       // tasks.map((item) => {
       //   return item.id == task.id
       //     ? { ...item, value: taskInputUpdateValue }
       //     : item;
       // })
-
       for (const item of prevState) {
         if (item.id == task.id) {
-          console.log(
-            // item.id,
-            // task.id,
-            // // Object.values(...prevState),
-            taskInputUpdateValue,
-            { ...item }
-          );
           [
             ...prevState.splice(prevState.indexOf(item), 1, {
               id: task.id,
