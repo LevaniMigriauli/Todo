@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import "./App.css";
 
 import iconDelete from "./assets/delete.svg";
@@ -45,7 +45,7 @@ function App() {
     };
   }, []);
 
-  console.log(date);
+  // console.log(date);
 
   useEffect(() => {
     const localStorageTasks = localStorage.setItem(
@@ -59,9 +59,10 @@ function App() {
       id: String(Math.random()),
       value: taskInputValue,
     };
-    setTasks((prevState) => {
-      return [...prevState, obj];
-    });
+    taskInputValue !== "" &&
+      setTasks((prevState) => {
+        return [...prevState, obj];
+      });
 
     // taskInputValue.current.value = "";
     setTaskInputValue("");
@@ -147,7 +148,9 @@ function App() {
             e.key == "Enter" && taskAddHandler();
           }}
           // value={taskInputValue}
-          onChange={(e) => setTaskInputValue(e.target.value)}
+          onChange={(e) =>
+            e.target.value.length < 20 && setTaskInputValue(e.target.value)
+          }
           placeholder="Note"
         />
         <button className="btn-add" onClick={taskAddHandler}>
@@ -164,8 +167,17 @@ function App() {
                     // defaultValue={task.value}
                     value={taskInputUpdateValue}
                     onChange={(e) => setTaskInputUpdateValue(e.target.value)}
+                    onKeyDown={(e) =>
+                      e.key === "Enter" &&
+                      taskInputUpdateValue !== "" &&
+                      taskSaveHandler(task)
+                    }
                   />
-                  <button onClick={() => taskSaveHandler(task)}>
+                  <button
+                    onClick={() =>
+                      taskInputUpdateValue !== "" && taskSaveHandler(task)
+                    }
+                  >
                     <img src={iconSave} alt="" />
                   </button>
                 </Fragment>
