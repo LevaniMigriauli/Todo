@@ -4,6 +4,9 @@ import "./App.css";
 import iconDelete from "./assets/delete.svg";
 import iconUpdate from "./assets/update.svg";
 import iconSave from "./assets/save.svg";
+import styled from "styled-components";
+
+import ImgContainer from "./components/ImgContainer";
 
 const getLocalStorage = localStorage.getItem("tasksStorage");
 const isLocalStorage = getLocalStorage ? JSON.parse(getLocalStorage) : [];
@@ -42,7 +45,10 @@ function App() {
     const obj = {
       id: String(Math.random()),
       value: taskInputValue,
-      time: new Date().toLocaleString(),
+      // time: new Date().getHours().toLocaleString(),
+      day: day,
+      hour: hour,
+      min: min,
     };
     taskInputValue !== "" &&
       setTasks((prevState) => {
@@ -83,7 +89,10 @@ function App() {
             ...prevState.splice(prevState.indexOf(item), 1, {
               id: task.id,
               value: taskInputUpdateValue,
-              time: new Date().toLocaleString(),
+              // time: new Date().toLocaleString(),
+              day: day,
+              hour: hour,
+              min: min,
             }),
           ];
           break;
@@ -94,17 +103,20 @@ function App() {
   };
 
   return (
-    <>
-      <div className="date">
-        <p>
-          {day} {dateN}
-        </p>
-        <p>
-          {hour} : {min} {hour >= 12 ? "PM" : "AM"}
-        </p>
-      </div>
+    <MainContainer>
+      <ImgContainer>
+        <div className="date">
+          <p>
+            {day} {dateN}
+          </p>
+          <p>
+            {hour} : {min} {hour >= 12 ? "PM" : "AM"}
+          </p>
+        </div>
+      </ImgContainer>
+
       <div>
-        <input
+        <NewTaskInput
           id="task-input"
           type="text"
           name=""
@@ -167,15 +179,29 @@ function App() {
                       onClick={() => taskDeleteHandler(task)}
                     />
                   </button>
-                  <p>{task.time}</p>
+                  <p>
+                    {task.day === weekday[date.getDay()] ? "Today" : task.day}{" "}
+                    at {task.hour} : {task.min} {task.hour >= 12 ? "PM" : "AM"}
+                  </p>
                 </Fragment>
               )}
             </li>
           ))}
         </ul>
       </div>
-    </>
+    </MainContainer>
   );
 }
+
+const MainContainer = styled.div`
+  height: 636px;
+  width: 430px;
+  border-radius: 10px;
+  border: 1px solid black;
+`;
+
+const NewTaskInput = styled.input`
+  height: 49px;
+`;
 
 export default App;
