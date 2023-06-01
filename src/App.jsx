@@ -11,23 +11,12 @@ const isLocalStorage = getLocalStorage ? JSON.parse(getLocalStorage) : [];
 const weekday = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 
 function App() {
-  // const [taskInputValue, setTaskInputValue] = useState();
   const [taskInputValue, setTaskInputValue] = useState("");
   const [taskId, setTaskId] = useState("");
   const [taskInputUpdateValue, setTaskInputUpdateValue] = useState("");
   const [tasks, setTasks] = useState(isLocalStorage);
   const [date, setDate] = useState(new Date());
 
-  // const [taskUpdater, setTaskUpdater] = useState(false);
-  // const [taskupdatedValue, setTaskupdatedValue] = useState("");
-  // console.log(new Date());
-
-  // const timeFormat = {
-  //   day: weekday[date.getDay()],
-  //   dateN: date.getDate(),
-  //   hour: date.getHours(),
-  //   min: date.getMinutes(),
-  // };
   const refreshTimeHandler = function () {
     setDate(new Date());
   };
@@ -45,28 +34,22 @@ function App() {
     };
   }, []);
 
-  // console.log(date);
-
   useEffect(() => {
-    const localStorageTasks = localStorage.setItem(
-      "tasksStorage",
-      JSON.stringify(tasks)
-    );
+    localStorage.setItem("tasksStorage", JSON.stringify(tasks));
   }, [tasks]);
 
   const taskAddHandler = function () {
     const obj = {
       id: String(Math.random()),
       value: taskInputValue,
+      time: new Date().toLocaleString(),
     };
     taskInputValue !== "" &&
       setTasks((prevState) => {
         return [...prevState, obj];
       });
 
-    // taskInputValue.current.value = "";
     setTaskInputValue("");
-    // localStorage.setItem("task", JSON.stringify(tasks));
   };
 
   const taskDeleteHandler = function (task) {
@@ -82,10 +65,6 @@ function App() {
   };
 
   const taskUpdateHandler = function (task) {
-    // setTaskUpdater(true);
-    // console.log(taskupdatedValue);
-    // console.log(taskInputValue);
-    // setTaskInputValue(task.value);
     setTaskId(task.id);
     setTaskInputUpdateValue(task.value);
   };
@@ -104,6 +83,7 @@ function App() {
             ...prevState.splice(prevState.indexOf(item), 1, {
               id: task.id,
               value: taskInputUpdateValue,
+              time: new Date().toLocaleString(),
             }),
           ];
           break;
@@ -128,12 +108,10 @@ function App() {
           id="task-input"
           type="text"
           name=""
-          // ref={taskInputValue}
           value={taskInputValue}
           onKeyDown={(e) => {
             e.key == "Enter" && taskAddHandler();
           }}
-          // value={taskInputValue}
           onChange={(e) =>
             e.target.value.length < 20 && setTaskInputValue(e.target.value)
           }
@@ -150,7 +128,6 @@ function App() {
               {task.id == taskId ? (
                 <Fragment>
                   <input
-                    // defaultValue={task.value}
                     value={taskInputUpdateValue}
                     onChange={(e) =>
                       e.target.value.length < 20 &&
@@ -190,6 +167,7 @@ function App() {
                       onClick={() => taskDeleteHandler(task)}
                     />
                   </button>
+                  <p>{task.time}</p>
                 </Fragment>
               )}
             </li>
