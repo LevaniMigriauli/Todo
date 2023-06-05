@@ -48,13 +48,18 @@ function App() {
 }
 
 const MainContainer = styled.div`
-  height: 636px;
+  min-height: 636px;
   width: 430px;
   border-radius: 10px;
   background: ${({ theme }) => theme.colors.white};
 
   position: absolute;
   left: 53%;
+
+  @media (max-width: 1024px) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 `;
 
 export default App;

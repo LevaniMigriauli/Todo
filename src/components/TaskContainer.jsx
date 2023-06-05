@@ -25,6 +25,7 @@ const TaskContainer = function ({ weekday, date, day, hour, min }) {
       min: min,
     };
     taskInputValue !== "" &&
+      tasks.length < 11 &&
       setTasks((prevState) => {
         return [...prevState, obj];
       });
@@ -88,7 +89,7 @@ const TaskContainer = function ({ weekday, date, day, hour, min }) {
             e.key == "Enter" && taskAddHandler();
           }}
           onChange={(e) =>
-            e.target.value.length < 20 && setTaskInputValue(e.target.value)
+            e.target.value.length < 29 && setTaskInputValue(e.target.value)
           }
           placeholder="Note"
         />

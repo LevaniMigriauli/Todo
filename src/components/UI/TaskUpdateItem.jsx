@@ -16,7 +16,7 @@ const TaskUpdateItem = function ({
       <input
         value={taskInputUpdateValue}
         onChange={(e) =>
-          e.target.value.length < 20 && setTaskInputUpdateValue(e.target.value)
+          e.target.value.length < 29 && setTaskInputUpdateValue(e.target.value)
         }
         onKeyDown={(e) =>
           e.key === "Enter" && taskInputUpdateValue !== "" && onTaskSave(task)
