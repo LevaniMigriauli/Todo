@@ -54,7 +54,7 @@ Error generating stack: `+o.message+`
     box-sizing: border-box;
   }
 
-  body #root {
+  body>div{
     font-family: Inter, sans-serif;
     line-height: 1.5;
     font-weight: 400;
@@ -86,9 +86,6 @@ Error generating stack: `+o.message+`
           }
     }
   }
-
-
-
 `,gm="/Todo/assets/Img-Container-Background-ffe2f7bf.png",ym=({day:e,dateN:t,hour:n,min:r})=>W.jsx(wm,{children:W.jsxs("div",{children:[W.jsxs("p",{children:[e," ",t]}),W.jsxs("p",{children:[n,":",r," ",n>=12?"PM":"AM"]})]})}),wm=Pt.div`
   height: 202px;
   width: 100%;
