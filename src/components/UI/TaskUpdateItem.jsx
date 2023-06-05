@@ -1,0 +1,49 @@
+import React, { Fragment } from "react";
+import styled from "styled-components";
+
+import Button from "./Button";
+
+import iconSave from "../../assets/imgs/save.svg";
+
+const TaskUpdateItem = function ({
+  task,
+  taskInputUpdateValue,
+  onTaskSave,
+  setTaskInputUpdateValue,
+}) {
+  return (
+    <UpdateTask>
+      <input
+        value={taskInputUpdateValue}
+        onChange={(e) =>
+          e.target.value.length < 20 && setTaskInputUpdateValue(e.target.value)
+        }
+        onKeyDown={(e) =>
+          e.key === "Enter" && taskInputUpdateValue !== "" && onTaskSave(task)
+        }
+      />
+      <Button
+        onClick={() => taskInputUpdateValue !== "" && onTaskSave(task)}
+        icon={iconSave}
+        alt="Save icon"
+      ></Button>
+    </UpdateTask>
+  );
+};
+
+const UpdateTask = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  input {
+    font-size: 18px;
+    width: 275px;
+    height: 32px;
+    background-color: #ebeff2;
+    border: none;
+    padding-left: 8px;
+  }
+`;
+
+export default TaskUpdateItem;
