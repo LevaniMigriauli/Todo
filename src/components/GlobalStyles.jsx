@@ -1,9 +1,11 @@
-import styled, { createGlobalStyle } from "styled-components";
-
-// import russoOne from "../assets/fonts/RussoOne-Regular.ttf";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 #root {
+    font-family: Inter, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+      
     display: flex;
     align-items: center;
     
@@ -12,7 +14,6 @@ const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.background};
 
     @media (max-width: 1024px) {
-        
         padding: 200px 0 0 0 ;
       }
 
@@ -29,13 +30,11 @@ const GlobalStyles = createGlobalStyle`
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-
           }
     }
   }
 
 
-  
   * {
     margin: 0;
     padding: 0;

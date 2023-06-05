@@ -64,7 +64,6 @@ const TaskContainer = function ({ weekday, date, day, hour, min }) {
             ...prevState.splice(prevState.indexOf(item), 1, {
               id: task.id,
               value: taskInputUpdateValue,
-              // time: new Date().toLocaleString(),
               day: day,
               hour: hour,
               min: min,

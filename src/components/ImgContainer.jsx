@@ -1,11 +1,8 @@
-import { Fragment } from "react";
-import { Helmet } from "react-helmet";
 import styled from "styled-components";
-import ImgContainerBackground from "../assets/Img-Container-Background.png";
+import ImgContainerBackground from "../assets/imgs/Img-Container-Background.png";
 
 const ImgContainer = ({ day, dateN, hour, min }) => {
   return (
-    // <RussoFontWrapper>
     <ImgBox>
       <div>
         <p>
@@ -16,7 +13,6 @@ const ImgContainer = ({ day, dateN, hour, min }) => {
         </p>
       </div>
     </ImgBox>
-    // </RussoFontWrapper>
   );
 };
 
@@ -49,9 +45,5 @@ const ImgBox = styled.div`
     }
   }
 `;
-
-// const RussoFontWrapper = styled.div`
-
-// `;
 
 export default ImgContainer;
