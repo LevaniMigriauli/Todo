@@ -9,13 +9,13 @@ const GlobalStyles = createGlobalStyle`
     justify-content: space-around;
     height: 100vh;
     position: relative;
-    background-color: #f1f1f1;
+    background-color: ${({ theme }) => theme.colors.background};
 
     :before{
         content: "Todo";
         position: absolute;
         left: 19%;
-        color: #007FDB;
+        color: ${({ theme }) => theme.colors.blue};
         font-size:96px;
         font-family: "Inter";
         font-weight: 700;

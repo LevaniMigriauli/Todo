@@ -38,7 +38,7 @@ const Task = ({
 };
 
 const EachTask = styled.li`
-  color: #0d0d0d;
+  color: ${({ theme }) => theme.colors.darkBlack};
 
   height: 44px;
   width: 100%;

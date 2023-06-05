@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import styled, { ThemeProvider } from "styled-components";
+import { defaultTheme } from "./assets/themes/deafultTheme";
 import GlobalStyles from "./components/GlobalStyles";
 
 import ImgContainer from "./components/ImgContainer";
@@ -29,20 +30,20 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider theme={}>
-    <MainContainer>
-      <GlobalStyles />
-      <ImgContainer day={day} dateN={dateN} hour={hour} min={min} />
+    <ThemeProvider theme={defaultTheme}>
+      <MainContainer>
+        <GlobalStyles />
+        <ImgContainer day={day} dateN={dateN} hour={hour} min={min} />
 
-      <TaskContainer
-        weekday={weekday}
-        date={date}
-        day={day}
-        hour={hour}
-        min={min}
-      />
-    </MainContainer>
-     </ThemeProvider>
+        <TaskContainer
+          weekday={weekday}
+          date={date}
+          day={day}
+          hour={hour}
+          min={min}
+        />
+      </MainContainer>
+    </ThemeProvider>
   );
 }
 
@@ -50,7 +51,10 @@ const MainContainer = styled.div`
   height: 636px;
   width: 430px;
   border-radius: 10px;
-  background: #fff;
+  background: ${({ theme }) => theme.colors.white};
+
+  position: absolute;
+  left: 53%;
 `;
 
 export default App;

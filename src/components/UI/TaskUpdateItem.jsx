@@ -40,9 +40,14 @@ const UpdateTask = styled.div`
     font-size: 18px;
     width: 275px;
     height: 32px;
-    background-color: #ebeff2;
+    background-color: ${({ theme }) => theme.colors.lightGrey};
     border: none;
+    border-radius: 5px;
     padding-left: 8px;
+
+    &:focus {
+      outline: 1px solid ${({ theme }) => theme.colors.lightGreen};
+    }
   }
 `;
 

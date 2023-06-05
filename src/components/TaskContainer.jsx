@@ -128,7 +128,7 @@ const NewTask = styled.div`
     height: 100%;
     width: 275px;
     margin-right: 8px;
-    background-color: #ebeff2;
+    background-color: ${({ theme }) => theme.colors.lightGrey};
     border: none;
     padding: 0 0 0 14px;
     border-radius: 5px;
@@ -141,14 +141,16 @@ const NewTask = styled.div`
 
     &:focus {
       outline: none;
-      border: 2px solid #20eeb0;
+      border: 2px solid ${({ theme }) => theme.colors.lightGreen};
     }
   }
 
   button {
+    color: ${({ theme }) => theme.colors.white};
+    font-size: 16px;
     width: 89px;
     height: 100%;
-    background-color: #20eeb0;
+    background-color: ${({ theme }) => theme.colors.lightGreen};
     border: none;
     border-radius: 5px;
   }
