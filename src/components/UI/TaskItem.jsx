@@ -1,4 +1,3 @@
-import React, { Fragment } from "react";
 import styled from "styled-components";
 
 import iconDelete from "../../assets/imgs/delete.svg";
