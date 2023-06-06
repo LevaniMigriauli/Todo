@@ -199,7 +199,7 @@ Error generating stack: `+o.message+`
   gap: 10px;
   padding: 36px 0 0 0;
   width: 100%;
-`,ma=["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];function Am(){const[e,t]=fe.useState(new Date),n=function(){t(new Date)},r=ma[e.getDay()],l=e.getDate(),o=e.getHours(),i=e.getMinutes();return fe.useEffect(()=>{const u=setInterval(n,6e4);return function(){clearInterval(u)}},[]),B.jsx(B.Fragment,{children:B.jsxs(dm,{theme:vm,children:[B.jsx(mm,{}),B.jsxs(jm,{children:[B.jsx(ym,{day:r,dateN:l,hour:o,min:i}),B.jsx(Im,{weekday:ma,date:e,day:r,hour:o,min:i})]})]})})}const jm=Pt.div`
+`,ma=["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];function Am(){const[e,t]=fe.useState(new Date),n=function(){t(new Date)},r=ma[e.getDay()],l=e.getDate(),o=e.getHours(),i=e.getMinutes();return fe.useEffect(()=>{const u=setInterval(n,6e4);return function(){clearInterval(u)}},[]),B.jsx(B.Fragment,{children:B.jsx(dm,{theme:vm,children:B.jsxs("div",{children:[B.jsx(mm,{}),B.jsxs(jm,{children:[B.jsx(ym,{day:r,dateN:l,hour:o,min:i}),B.jsx(Im,{weekday:ma,date:e,day:r,hour:o,min:i})]})]})})})}const jm=Pt.div`
   min-height: 636px;
   width: 430px;
   border-radius: 10px;
