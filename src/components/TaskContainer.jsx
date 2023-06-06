@@ -25,7 +25,7 @@ const TaskContainer = function ({ weekday, date, day, hour, min }) {
       min: min,
     };
     taskInputValue !== "" &&
-      tasks.length < 11 &&
+      tasks.length < 6 &&
       setTasks((prevState) => {
         return [...prevState, obj];
       });
