@@ -166,7 +166,6 @@ Error generating stack: `+o.message+`
   width: 430px;
   border-radius: 10px;
   background: ${({theme:e})=>e.colors.white};
-  margin-top: 100px;
 
   position: absolute;
   left: 53%;
