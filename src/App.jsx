@@ -52,7 +52,6 @@ const MainContainer = styled.div`
   width: 430px;
   border-radius: 10px;
   background: ${({ theme }) => theme.colors.white};
-  margin-top: 100px;
 
   position: absolute;
   left: 53%;
