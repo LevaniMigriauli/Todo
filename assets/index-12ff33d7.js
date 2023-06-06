@@ -54,7 +54,7 @@ Error generating stack: `+o.message+`
     box-sizing: border-box;
   }
 
-  /* body>div{
+  #root {
     font-family: Inter, sans-serif;
     line-height: 1.5;
     font-weight: 400;
@@ -66,26 +66,26 @@ Error generating stack: `+o.message+`
     position: relative;
     background-color: ${({theme:e})=>e.colors.background};
 
-    /* @media (max-width: 1024px) {
+    @media (max-width: 1024px) {
         padding: 200px 0 0 0 ;
-      } */
+      }
 
-    /* &:before{
+    &:before{
         content: "Todo";
         position: absolute;
         left: 19%;
         color: ${({theme:e})=>e.colors.blue};
         font-size:96px;
         font-family: "Inter";
-        font-weight: 700; */
+        font-weight: 700;
 
-        /* @media (max-width: 1024px) {
+        @media (max-width: 1024px) {
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-          } */
-    /* } */
-  /* } */
+          }
+    }
+  }
 `,gm="/Todo/assets/Img-Container-Background-ffe2f7bf.png",ym=({day:e,dateN:t,hour:n,min:r})=>W.jsx(wm,{children:W.jsxs("div",{children:[W.jsxs("p",{children:[e," ",t]}),W.jsxs("p",{children:[n,":",r," ",n>=12?"PM":"AM"]})]})}),wm=Pt.div`
   height: 202px;
   width: 100%;
@@ -200,7 +200,7 @@ Error generating stack: `+o.message+`
   gap: 10px;
   padding: 36px 0 0 0;
   width: 100%;
-`,ma=["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];function Am(){const[e,t]=fe.useState(new Date),n=function(){t(new Date)},r=ma[e.getDay()],l=e.getDate(),o=e.getHours(),i=e.getMinutes();return fe.useEffect(()=>{const u=setInterval(n,6e4);return function(){clearInterval(u)}},[]),W.jsx(dm,{theme:mm,children:W.jsxs(jm,{children:[W.jsx(vm,{}),W.jsx(ym,{day:r,dateN:l,hour:o,min:i}),W.jsx(Im,{weekday:ma,date:e,day:r,hour:o,min:i})]})})}const jm=Pt.div`
+`,ma=["Sun","Mon","Tue","Wed","Thur","Fri","Sat"];function Am(){const[e,t]=fe.useState(new Date),n=function(){t(new Date)},r=ma[e.getDay()],l=e.getDate(),o=e.getHours(),i=e.getMinutes();return fe.useEffect(()=>{const u=setInterval(n,6e4);return function(){clearInterval(u)}},[]),W.jsxs(dm,{theme:mm,children:[W.jsx(vm,{}),W.jsxs(jm,{children:[W.jsx(ym,{day:r,dateN:l,hour:o,min:i}),W.jsx(Im,{weekday:ma,date:e,day:r,hour:o,min:i})]})]})}const jm=Pt.div`
   min-height: 636px;
   width: 430px;
   border-radius: 10px;
