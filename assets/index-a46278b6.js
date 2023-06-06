@@ -182,6 +182,7 @@ Error generating stack: `+o.message+`
 
     @media (max-width: 1024px) {
         padding: 200px 0 0 0 ;
+        /* height: fit-content; */
       }
 
     &:before{
@@ -212,5 +213,6 @@ Error generating stack: `+o.message+`
   @media (max-width: 1024px) {
     left: 50%;
     transform: translateX(-50%);
+    overflow: hidden;
   }
 `;Yo.createRoot(document.getElementById("root")).render(B.jsx(cn.StrictMode,{children:B.jsx(Lm,{})}));
